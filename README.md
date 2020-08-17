@@ -1,2 +1,2 @@
 # SpringKanban
-Projeto para criar boards e tasks kanban utilizando Spring Boot, Spring MVC e Thymeleaf
+Projeto para criar boards e tasks kanban utilizando Spring Boot, Spring MVC, Spring Data e Thymeleaf
