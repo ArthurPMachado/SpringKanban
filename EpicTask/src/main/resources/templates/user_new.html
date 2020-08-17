@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Novo usuário</h1>
+	
+		<form action="/user" method="POST">
+			<fieldset>
+				<label for="name">Nome Completo</label>
+				<input id="name" name="name" value="Arthur Pereira Machado"/>
+			</fieldset>
+			<fieldset>
+				<label for="email">E-mail</label>
+				<input id="email" name="email" value="arthurpereiramachado01@gmail.com"/>
+			</fieldset>
+			<fieldset>
+				<label for="pass">Senha</label>
+				<input id="pass" name="pass" type="password" value="123456789"/>
+			</fieldset>
+			<a href="/user">Cancelar</a>
+			<button>Salvar</button>
+		</form>
+	</body>
+</html>
