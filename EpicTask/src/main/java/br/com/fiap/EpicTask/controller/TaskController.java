@@ -2,13 +2,12 @@ package br.com.fiap.EpicTask.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class UserController {
+public class TaskController {
 
-	@RequestMapping("/user")
-	public String users() {
-		return "users";
+	@RequestMapping("/task")
+	public String tasks() {
+		return "tasks";
 	}
 }
