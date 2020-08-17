@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.fiap.EpicTask.model.User;
 import br.com.fiap.EpicTask.repository.UserRepository;
@@ -24,7 +23,7 @@ public class UserController {
 	public String save(User user) {
 		System.out.println(user);
 		repository.save(user);
-		return "users";
+		return "redirect:user";
 	}
 	
 	@RequestMapping("/user/new")
