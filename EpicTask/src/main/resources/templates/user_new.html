@@ -6,23 +6,19 @@
 	</head>
 	
 	<body>
-		<h1>Novo usuário</h1>
 	
-		<form action="/user" method="POST">
-			<div>
-				<label for="name">Nome Completo</label>
-				<input id="name" name="name" value="Arthur Pereira Machado"/>
-			</div>
-			<div>
-				<label for="email">E-mail</label>
-				<input id="email" name="email" value="arthurpereiramachado01@gmail.com"/>
-			</div>
-			<div>
-				<label for="pass">Senha</label>
-				<input id="pass" name="pass" type="password" value="123456789"/>
-			</div>
-			<a href="/user">Cancelar</a>
-			<button>Salvar</button>
-		</form>
+		<div class="content">
+			<h2>Novo usuário</h2>
+			<form action="/user" method="POST">
+				<input name="name" type="text" placeholder="Nome Completo" value="Arthur Pereira Machado"/>
+				<input name="email" type="text" placeholder="E-mail" value="arthurpereiramachado01@gmail.com"/>
+				<input name="pass" type="password" placeholder="Senha" value="123456789"/>
+				
+				<div class="actions">
+					<a href="/user" class="btn">Cancelar</a>
+					<button class="btn blue">Salvar</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
