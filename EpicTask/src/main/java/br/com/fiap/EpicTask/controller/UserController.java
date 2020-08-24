@@ -1,5 +1,7 @@
 package br.com.fiap.EpicTask.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.fiap.EpicTask.model.User;
 import br.com.fiap.EpicTask.repository.UserRepository;
@@ -20,8 +23,11 @@ public class UserController {
 	private UserRepository repository;
 
 	@GetMapping
-	public String users() {
-		return "users";
+	public ModelAndView users() {
+		List<User> users = repository.findAll();
+		ModelAndView modelAndView = new ModelAndView("users");
+		modelAndView.addObject("users", users);
+		return modelAndView;
 	}
 	
 	@PostMapping

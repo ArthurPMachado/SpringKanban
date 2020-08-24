@@ -16,5 +16,9 @@
 		<a href="/user/new" class="btn-sm btn-primary">
 			<span class="material-icons">add</span>
 		</a>
+		
+		<ul th:each="user : ${users}">
+			<li th:text="${user.name}"></li>
+		</ul>		
 	</body>
 </html>
