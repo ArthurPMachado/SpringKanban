@@ -34,7 +34,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("new")
-	public String formUser() {
+	public String formUser(User user) {
 		return "user_new";
 	}
 }

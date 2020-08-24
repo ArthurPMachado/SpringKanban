@@ -9,10 +9,33 @@
 	
 		<div class="content">
 			<h2>Novo usuário</h2>
-			<form action="/user" method="POST">
-				<input name="name" type="text" placeholder="Nome Completo" value="Arthur Pereira Machado"/>
-				<input name="email" type="text" placeholder="E-mail" value="arthurpereiramachado01@gmail.com"/>
-				<input name="pass" type="password" placeholder="Senha" value="123456789"/>
+			<form action="/user" method="POST" th:object="${user}">
+				<input 
+					name="name" 
+					type="text" 
+					placeholder="Nome Completo" 
+					value="Arthur Pereira Machado"
+					th:classappend="${#fields.hasErrors('name')} ? invalid"
+				/>
+				<span th:errors="*{name}"></span>
+				
+				<input 
+					name="email" 
+					type="text" 
+					placeholder="E-mail" 
+					value="arthurpereiramachado01@gmail.com"
+					th:classappend="${#fields.hasErrors('email')} ? invalid"
+				/>
+				<span th:errors="*{email}"></span>
+				
+				<input 
+					name="pass" 
+					type="password" 
+					placeholder="Senha" 
+					value="123456789"
+					th:classappend="${#fields.hasErrors('pass')} ? invalid"
+				/>
+				<span th:errors="*{pass}"></span>
 				
 				<div class="actions">
 					<a href="/user" class="btn">Cancelar</a>
