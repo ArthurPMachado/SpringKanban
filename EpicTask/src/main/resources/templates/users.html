@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
+	
+	<head th:include="_template :: head">
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
 	</head>
+	
 	<body>
 		<h1>Equipe</h1>
 		
@@ -12,6 +13,8 @@
 		
 		<footer th:include="_template :: footer"></footer>
 		
-		<a href="/user/new">Novo usuário</a>
+		<a href="/user/new" class="btn-sm btn-primary">
+			<span class="material-icons">add</span>
+		</a>
 	</body>
 </html>
