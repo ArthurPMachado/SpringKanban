@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.EpicTask.model.User;
 import br.com.fiap.EpicTask.repository.UserRepository;
@@ -31,11 +32,12 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public String save(@Valid User user, BindingResult result) {
+	public String save(@Valid User user, BindingResult result, RedirectAttributes attribute) {
 		if(result.hasErrors()) {
 			return "user_new";
 		}
 		repository.save(user);
+		attribute.addFlashAttribute("message", "usuário cadastrado com sucesso");
 		return "redirect:user";
 	}
 	
