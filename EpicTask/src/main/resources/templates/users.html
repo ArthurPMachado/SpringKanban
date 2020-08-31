@@ -27,7 +27,7 @@
 				</div>
 				
 				<div class="user-action">
-					<a>
+					<a th:href="${'/user/' + user.id}">
 						<span class="material-icons yellow">create</span>
 					</a>
 					<a th:href="${'/user/delete/' + user.id}">

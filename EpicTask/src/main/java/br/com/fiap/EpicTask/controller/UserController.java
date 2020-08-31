@@ -1,6 +1,7 @@
 package br.com.fiap.EpicTask.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -51,6 +52,23 @@ public class UserController {
 	public String deleteUser(@PathVariable Long id, RedirectAttributes attributes) {
 		repository.deleteById(id);
 		attributes.addFlashAttribute("message", "Usuário apagado com sucesso");
+		return "redirect:/user";
+	}
+	
+	@GetMapping("{id}")
+	public ModelAndView editForm(@PathVariable Long id) {
+		Optional<User> user = repository.findById(id);
+		ModelAndView modelAndView = new ModelAndView("user_edit");
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+	
+	@PostMapping("update")
+	public String updateUser(@Valid User user, BindingResult result) {
+		if(result.hasErrors()) {
+			return "user_edit";
+		}
+		repository.save(user);
 		return "redirect:/user";
 	}
 }
