@@ -9,11 +9,29 @@
 	
 	<body>
 	
-		<nav th:fragment="menu">
+		<nav th:fragment="menu(page)">
 			<ul>
-				<li><a th:text="#{menu.tasks}" href="/task"></a></li>
-				<li><a th:text="#{menu.done}" href="#"></a></li>
-				<li><a th:text="#{menu.team}" href="/user" class="active"></a></li>
+				<li><a 
+						th:text="#{menu.tasks}" 
+						href="/task"
+						th:classappend="${page=='task'} ? active"
+					>
+					</a>
+				</li>
+				<li><a 
+						th:text="#{menu.done}" 
+						href="#"
+						th:classappend="${page=='done'} ? active"
+					>
+					</a>
+				</li>
+				<li><a 
+						th:text="#{menu.team}" 
+						href="/user" 
+						th:classappend="${page=='team'} ? active"
+					>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</body>

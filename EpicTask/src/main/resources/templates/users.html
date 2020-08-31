@@ -8,7 +8,7 @@
 	<body>
 		<h1>Equipe</h1>
 		
-		<nav th:include="_template :: menu"></nav>
+		<nav th:include="_template :: menu('team')"></nav>
 		
 		<a href="/user/new" class="btn-sm btn-primary">
 			<span class="material-icons">add</span>
@@ -19,7 +19,7 @@
 			
 			<div class="user" th:each="user : ${users}">
 			
-				<img alt="" src="" class="avatar">
+				<img alt="Avatar do usuário" src="https://avatars2.githubusercontent.com/u/32346751?s=460&u=ccd29523c1c75aa3822afa91919fcc0afc5c4edb&v=4" class="avatar">
 				
 				<div class="user-info">
 					<h4 th:text="${user.name}"></h4>
