@@ -13,7 +13,8 @@
 				<input 
 					name="name" 
 					type="text" 
-					placeholder="Nome Completo" 
+					placeholder="Nome Completo"
+					value="Arthur Pereira Machado"
 					th:classappend="${#fields.hasErrors('name')} ? invalid"
 				/>
 				<span th:errors="*{name}"></span>
@@ -21,7 +22,8 @@
 				<input 
 					name="email" 
 					type="text" 
-					placeholder="E-mail" 
+					placeholder="E-mail"
+					value="machadoparthur@gmail.com"
 					th:classappend="${#fields.hasErrors('email')} ? invalid"
 				/>
 				<span th:errors="*{email}"></span>
