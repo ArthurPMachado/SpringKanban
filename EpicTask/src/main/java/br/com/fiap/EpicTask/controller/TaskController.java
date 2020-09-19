@@ -28,18 +28,18 @@ public class TaskController {
 	@GetMapping
 	public ModelAndView tasks() {
 		List<Task> tasks = repository.findAll();
-		ModelAndView modelAndView = new ModelAndView("tasks");
+		ModelAndView modelAndView = new ModelAndView("task");
 		modelAndView.addObject("tasks", tasks);
 		return modelAndView;
 	}
 	
 	@PostMapping
-	public String save(BindingResult result, @Valid Task task, RedirectAttributes attribute) {
+	public String save(@Valid Task task, BindingResult result, RedirectAttributes attribute) {
 		if(result.hasErrors()) {
 			return "task_new";
 		}
 		repository.save(task);
-		attribute.addFlashAttribute("inserido", "Task criada com sucesso");
+		attribute.addFlashAttribute("msg", "Task criada com sucesso");
 		return "redirect:task";
 	}
 	
@@ -51,13 +51,13 @@ public class TaskController {
 	@GetMapping("{id}")
 	public ModelAndView editTaskForm(@PathVariable Long id) {
 		Optional<Task> task = repository.findById(id);
-		ModelAndView modelAndView = new ModelAndView("task");
+		ModelAndView modelAndView = new ModelAndView("task_edit");
 		modelAndView.addObject("task", task);
 		return modelAndView;
 	}
 	
 	@PostMapping("update")
-	public String updateTask(Task task, BindingResult result) {
+	public String updateTask(@Valid Task task, BindingResult result) {
 		if(result.hasErrors()) {
 			return "task_edit";
 		}
@@ -68,7 +68,7 @@ public class TaskController {
 	@RequestMapping("delete/{id}")
 	public String removeTask(@PathVariable Long id, RedirectAttributes attribute) {
 		repository.deleteById(id);
-		attribute.addFlashAttribute("removido", "Task removida com sucesso");
+		attribute.addFlashAttribute("msg", "Task removida com sucesso");
 		return "redirect:/task";
 	}
 	

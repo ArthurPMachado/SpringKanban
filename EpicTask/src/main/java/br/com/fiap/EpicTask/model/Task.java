@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity(name = "tasks")
 public class Task {
@@ -20,10 +19,8 @@ public class Task {
 	@NotBlank(message = "{task.description.empty}")
 	private String description;
 	
-	@Size(min = 1, max = 3, message = "{task.point.validation}")
 	private int point;
 	
-	@Size(min = 1, max = 3, message = "{task.status.validation}")
 	private int status;
 
 
