@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity(name = "tasks")
@@ -22,6 +23,9 @@ public class Task {
 	private int point;
 	
 	private int status;
+	
+	@ManyToOne
+	private User user;
 
 
 	public Long getId() {
@@ -71,6 +75,16 @@ public class Task {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
