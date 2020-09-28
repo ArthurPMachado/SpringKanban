@@ -28,9 +28,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/task/**", "/user/**")
 				.authenticated()
+			.antMatchers("/h2.console/**")
+				.permitAll()
 				.and()
-		//	.csrf()
-		//		.disable()
 			.formLogin()
 				.loginPage("/login");
 	}
