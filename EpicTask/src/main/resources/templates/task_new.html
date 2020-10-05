@@ -9,7 +9,7 @@
 	
 		<div class="content">
 			<h2>Cadastrar uma nova tarefa</h2>
-			<form action="/task" method="POST" th:object="${task}">
+			<form th:action="@{/task}" method="POST" th:object="${task}">
 				<input 
 					name="title"
 					type="text"

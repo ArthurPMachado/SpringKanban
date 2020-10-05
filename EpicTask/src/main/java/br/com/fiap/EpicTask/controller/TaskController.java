@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.fiap.EpicTask.model.Task;
 import br.com.fiap.EpicTask.model.User;
 import br.com.fiap.EpicTask.repository.TaskRepository;
+import br.com.fiap.EpicTask.service.TaskService;
 
 @Controller
 @RequestMapping("/task")
@@ -27,6 +28,9 @@ public class TaskController {
 	
 	@Autowired
 	private TaskRepository repository;
+	
+	@Autowired
+	private TaskService service;
 	
 	@GetMapping
 	public ModelAndView tasks() {
@@ -60,11 +64,11 @@ public class TaskController {
 	}
 	
 	@PostMapping("update")
-	public String updateTask(@Valid Task task, BindingResult result) {
+	public String updateTask(@Valid Task task, BindingResult result, RedirectAttributes attribute) {
 		if(result.hasErrors()) {
 			return "task_edit";
 		}
-		repository.save(task);
+		service.update(task);
 		return "redirect:/task";
 	}
 	

@@ -42,8 +42,16 @@ public class User implements UserDetails {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Role> roles = new ArrayList<Role>();
 	
+	private int point;
+	
 	public String getAvatar() {
 		return "https://avatars.githubusercontent.com/" + gitHubUser;
+	}
+	
+	public void toScore(int point) {
+		if (point > 0) {
+			setPoint(this.point + point);
+		}
 	}
 	
 	public Long getId() {
@@ -77,6 +85,22 @@ public class User implements UserDetails {
 	
 	public String getGitHubUser() {
 		return gitHubUser;
+	}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	public void setGitHubUser(String gitHubUser) {
