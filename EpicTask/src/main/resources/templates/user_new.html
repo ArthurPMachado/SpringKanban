@@ -13,15 +13,23 @@
 				<input 
 					name="name" 
 					type="text" 
-					placeholder="Nome Completo"
+					th:placeholder="#{form.label.name}"
 					th:classappend="${#fields.hasErrors('name')} ? invalid"
 				/>
 				<span th:errors="*{name}"></span>
 				
 				<input 
+					type="text"
+					th:placeholder="#{form.label.githubuser}"
+					th:field="*{gitHubUser}"
+					th:classappend="${#fields.hasErrors('gitHubUser')} ? invalid"
+				/>
+				<span th:errors="*{gitHubUser}"></span>
+				
+				<input 
 					name="email" 
 					type="text" 
-					placeholder="E-mail"
+					th:placeholder="#{form.label.email}"
 					th:classappend="${#fields.hasErrors('email')} ? invalid"
 				/>
 				<span th:errors="*{email}"></span>
@@ -29,14 +37,14 @@
 				<input 
 					name="pass" 
 					type="password" 
-					placeholder="Senha" 
+					th:placeholder="#{form.label.pass}" 
 					th:classappend="${#fields.hasErrors('pass')} ? invalid"
 				/>
 				<span th:errors="*{pass}"></span>
 				
 				<div class="actions">
-					<a href="/user" class="btn">Cancelar</a>
-					<button class="btn blue">Salvar</button>
+					<a href="/user" class="btn"  th:text="#{form.button.cancel}"></a>
+					<button class="btn blue" th:text="#{form.button.save}"></button>
 				</div>
 			</form>
 		</div>
