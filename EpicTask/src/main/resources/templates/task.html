@@ -37,7 +37,7 @@
 						<circle cx="70" cy="70" r="70" th:style="${'stroke-dashoffset:' + (440 - (440*task.status)/100 )} "></circle>
 					</svg>
 					<div class="number">
-						<h2 th:text="${task.status}"></h2>
+						<h2 th:text="${task.status + '%'}"></h2>
 					</div>
 				</div>
 				
