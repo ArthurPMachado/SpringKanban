@@ -38,7 +38,7 @@
 			</div>		
 			<div>
 				<span th:if="${!users.first}">
-					<a th:href="${'?page=' + (users.number-1)}">anterior</a>
+					<a th:href="@{ /user(page=${users.number-1}) }">anterior</a>
 				</span>
 				<span th:text="${users.number} + ' de '"></span>
 				<span th:text="${users.totalPages}"></span>
