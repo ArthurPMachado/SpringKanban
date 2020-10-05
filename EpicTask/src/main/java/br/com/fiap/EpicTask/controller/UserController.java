@@ -1,11 +1,13 @@
 package br.com.fiap.EpicTask.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,8 +29,8 @@ public class UserController {
 	private UserRepository repository;
 
 	@GetMapping
-	public ModelAndView users() {
-		List<User> users = repository.findAll();
+	public ModelAndView users(@PageableDefault(page = 0, size = 4) Pageable pageable) {
+		Page<User> users = repository.findAll(pageable);
 		ModelAndView modelAndView = new ModelAndView("users");
 		modelAndView.addObject("users", users);
 		return modelAndView;

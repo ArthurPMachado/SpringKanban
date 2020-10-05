@@ -36,6 +36,17 @@
 					</a>
 				</div>				
 			</div>		
+			<div>
+				<span th:if="${!users.first}">
+					<a th:href="${'?page=' + (users.number-1)}">anterior</a>
+				</span>
+				<span th:text="${users.number} + ' de '"></span>
+				<span th:text="${users.totalPages}"></span>
+				<span th:if="${!users.last}">
+					<a th:href="${'?page=' + (users.number+1)}">próxima</a>
+				</span>
+			</div>
 		</div>
+		
 	</body>
 </html>
