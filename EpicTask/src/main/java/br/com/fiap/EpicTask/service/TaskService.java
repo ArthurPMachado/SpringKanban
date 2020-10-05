@@ -1,5 +1,7 @@
 package br.com.fiap.EpicTask.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,10 @@ public class TaskService {
 			user.toScore(point);
 			userRepository.save(user);
 		}
+	}
+
+	public List<Task> findTaskNotFinished() {
+		return taskRepository.findByStatusLessThan(100);
 	}
 	
 }

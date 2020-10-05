@@ -34,7 +34,7 @@ public class TaskController {
 	
 	@GetMapping
 	public ModelAndView tasks() {
-		List<Task> tasks = repository.findAll();
+		List<Task> tasks = service.findTaskNotFinished();
 		ModelAndView modelAndView = new ModelAndView("task");
 		modelAndView.addObject("tasks", tasks);
 		return modelAndView;
