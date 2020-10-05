@@ -32,6 +32,12 @@ public class User implements UserDetails {
 	@Size(min = 8, message = "{user.senha.validation}")
 	private String pass;
 	
+	@NotBlank (message = "{user.github.blank}")
+	private String gitHubUser;
+	
+	public String getAvatar() {
+		return "https://avatars.githubusercontent.com/" + gitHubUser;
+	}
 	
 	public Long getId() {
 		return id;
@@ -57,10 +63,19 @@ public class User implements UserDetails {
 	public String getPass() {
 		return pass;
 	}
+	
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
 	
+	public String getGitHubUser() {
+		return gitHubUser;
+	}
+
+	public void setGitHubUser(String gitHubUser) {
+		this.gitHubUser = gitHubUser;
+	}
+
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", email=" + email + "]";
