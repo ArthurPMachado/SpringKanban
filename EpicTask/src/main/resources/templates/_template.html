@@ -25,7 +25,7 @@
 					>
 					</a>
 				</li>
-				<li><a 
+				<li sec:authorize="hasRole('ROLE_ADMIN')"><a 
 						th:text="#{menu.team}" 
 						href="/user" 
 						th:classappend="${page=='team'} ? active"
