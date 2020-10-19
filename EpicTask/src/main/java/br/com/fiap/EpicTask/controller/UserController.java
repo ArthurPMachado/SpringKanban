@@ -1,6 +1,7 @@
 package br.com.fiap.EpicTask.controller;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -31,6 +32,11 @@ public class UserController {
 	@GetMapping
 	public ModelAndView users(@PageableDefault(page = 0, size = 4) Pageable pageable) {
 		Page<User> users = repository.findAll(pageable);
+		
+		users.getSort().stream()
+						.map(order -> order.getProperty() + "," + order.getDirection())
+						.collect(Collectors.joining());
+		
 		ModelAndView modelAndView = new ModelAndView("users");
 		modelAndView.addObject("users", users);
 		return modelAndView;
