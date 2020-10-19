@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -30,6 +32,7 @@ public class UserController {
 	private UserRepository repository;
 
 	@GetMapping
+	@Cacheable("users")
 	public ModelAndView users(@PageableDefault(page = 0, size = 4) Pageable pageable) {
 		Page<User> users = repository.findAll(pageable);
 		
@@ -58,6 +61,7 @@ public class UserController {
 		return "user_new";
 	}
 	
+	@CacheEvict(value = "users", allEntries = true)
 	@RequestMapping("delete/{id}")
 	public String deleteUser(@PathVariable Long id, RedirectAttributes attributes) {
 		repository.deleteById(id);
