@@ -1,5 +1,6 @@
 package br.com.fiap.EpicTask.controller;
 
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.fiap.EpicTask.exception.UserNotFoundException;
 import br.com.fiap.EpicTask.model.User;
 import br.com.fiap.EpicTask.repository.UserRepository;
 
@@ -33,8 +35,12 @@ public class UserController {
 
 	@GetMapping
 	@Cacheable("users")
-	public ModelAndView users(@PageableDefault(page = 0, size = 4) Pageable pageable) {
+	public ModelAndView users(@PageableDefault(page = 0, size = 4) Pageable pageable) throws SQLException {
 		Page<User> users = repository.findAll(pageable);
+		
+		if (users.getSize() < 100) {
+			throw new SQLException("table do not exist");
+		}
 		
 		users.getSort().stream()
 						.map(order -> order.getProperty() + "," + order.getDirection())
@@ -72,6 +78,9 @@ public class UserController {
 	@GetMapping("{id}")
 	public ModelAndView editForm(@PathVariable Long id) {
 		Optional<User> user = repository.findById(id);
+		if (!user.isPresent()) {
+			throw new UserNotFoundException();
+		}
 		ModelAndView modelAndView = new ModelAndView("user_edit");
 		modelAndView.addObject("user", user);
 		return modelAndView;
@@ -85,4 +94,6 @@ public class UserController {
 		repository.save(user);
 		return "redirect:/user";
 	}
+
+	
 }
